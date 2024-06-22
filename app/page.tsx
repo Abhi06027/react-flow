@@ -1,5 +1,11 @@
 "use client";
+import DataGridEditor from "@/components/DataGrid";
+// import Editor from "@/components/Editor";
+// import { PopoverComp } from "@/components/Popover";
+
+// import SearchBar from "@/components/SearchBar";
 import Table from "@/components/Table/Index";
+
 import React, { useCallback } from "react";
 
 import ReactFlow, {
@@ -16,13 +22,23 @@ import "reactflow/dist/style.css";
 
 const nodeTypes = {
   table: Table,
+  // searchBar: SearchBar,
+  // editor: Editor,
+  // popover: PopoverComp,
+  dataGrid: DataGridEditor,
 };
 
 const initialNodes: Node[] = [
-  { id: "1", type: "table", position: { x: 0, y: 0 }, data: { label: "1" } },
+  { id: "1", type: "table", position: { x: 300, y: 0 }, data: { label: "1" } },
   { id: "2", position: { x: 300, y: 300 }, data: { label: "2" } },
-  { id: "3", position: { x: 20, y: 350 }, data: { label: "3" } },
-  
+
+
+  {
+    id: "3",
+    type: "dataGrid",
+    position: { x: 500, y: 80 },
+    data: { label: "3" },
+  },
 ];
 
 const initialEdges: Edge[] = [
@@ -42,7 +58,7 @@ export default function Home() {
   );
 
   return (
-    <main className="">
+    <main>
       <div style={{ width: "100vw", height: "100vh" }}>
         <ReactFlow
           nodes={nodes}
